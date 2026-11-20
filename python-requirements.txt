@@ -1,0 +1,101 @@
+# urllib3 and certifi for network access
+urllib3
+certifi
+
+# static analysis tools
+autoflake
+bandit
+coverage
+dlint
+dodgy
+flake8
+flake8-2020
+flake8-absolute-import
+flake8-bugbear
+flake8-builtins
+flake8-commas
+flake8-comprehensions
+flake8-docstrings
+flake8-eradicate
+flake8-length
+flake8-mutable
+flake8-pyi
+flake8-pytest-style
+flake8-use-fstring
+mypy
+pycodestyle
+pydocstyle
+pyflakes
+pylint
+pyrefly
+pyroma
+ruff
+tryceratops
+vulture
+
+# sphinx is needed for generating documentation
+sphinx
+sphinx-autodoc-typehints
+
+# myst-parser is needed for README.md files
+myst-parser
+# for converting the additional markdown files to HTML
+markdown
+
+# minify_html is needed to minify html
+minify_html
+
+# We need pytest to run the unit tests.
+pytest
+pytest-timeout
+
+# needed for generating the installable pip packages
+setuptools
+testresources
+twine
+virtualenv
+wheel
+
+# psutil is used for getting information about the system configuration.
+psutil
+
+# We will need numpy for numerical computation and datastructures.
+numpy
+
+# numba provides JIT compilers useful making vector/numpy operations efficient
+numba
+
+# arbitrary precision floating point computation
+mpmath
+
+# symbolic algebra
+sympy
+
+# numba uses intel-cmplr-lib-rt to generate faster compiled code.
+intel-cmplr-lib-rt
+
+# used to create plots in the evaluation procedures.
+matplotlib
+seaborn
+
+# scientific computing, machine learning, statistics
+scipy
+scikit-learn
+xgboost
+
+# CMA-ES
+cmaes
+
+# defusedxml is used as safe alternative for XML parsing
+defusedxml
+
+# data access
+pandas
+openpyxl
+odfpy
+polars
+
+# our own packages
+pycommons[dev]
+moptipy[performance]
+moptipyapps

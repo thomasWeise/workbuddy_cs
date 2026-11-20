@@ -1,0 +1,41 @@
+name: Build Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_image:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v7.0.1
+
+      - name: assemble the website
+        run: |
+          website="/tmp/website"
+          mkdir -p $website
+          cp Dockerfile "$website/"
+          cp LICENSE "$website/"
+          cp *.sh "$website/"
+
+      - name: Convert README to HTML
+        uses: jaywcjlove/markdown-to-html-cli@v5.0.4
+        with:
+          source: README.md
+          output: /tmp/website/index.html
+
+      - name: deploy website
+        uses: JamesIves/github-pages-deploy-action@v4.8.0
+        with:
+          branch: gh-pages
+          folder: /tmp/website/
+          single-commit: true
+
+      - name: clear the website
+        run: |
+          website="/tmp/website"
+          rm -rf "$website"
