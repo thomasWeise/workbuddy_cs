@@ -84,6 +84,9 @@ scikit-learn
 scikit-image
 xgboost
 
+# AI, neural networks
+tensorflow-cpu
+
 # CMA-ES
 cmaes
 
