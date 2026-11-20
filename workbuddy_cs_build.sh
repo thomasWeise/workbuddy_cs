@@ -10,26 +10,11 @@ set -o errexit   # set -e : exit the script if any statement returns a non-true 
 
 echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Welcome to the WorkBuddy image preparation script."
 
-if [ -f "WorkBuddy.deb" ]; then
-    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): WorkBuddy.deb exists, no need to download it."
-else
-    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): WorkBuddy.deb does not exist, need to download it."
-    scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): The directory with the download script is '$scriptDir'."
-    "$scriptDir/workbuddy_download.sh"
-  if [ -f "WorkBuddy.deb" ]; then
-      echo "$(date +'%0Y-%0m-%0d %0R:%0S'): WorkBuddy.deb successfully downloaded."
-  else
-      echo "$(date +'%0Y-%0m-%0d %0R:%0S'): WorkBuddy.deb still does not exist, aborting."
-      exit 1
-  fi
-fi
-
 echo "$(date +'%0Y-%0m-%0d %0R:%0S'): We delete any potentially existing old images."
 docker image rm workbuddy_cs || true
 docker image rm workbuddy_cs || true
 
-echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now we build the plain image."
+echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now we build the computer science image."
 docker build --progress=plain -t workbuddy_cs .
 
 echo "$(date +'%0Y-%0m-%0d %0R:%0S'): All done."
