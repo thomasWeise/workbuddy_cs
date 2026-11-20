@@ -12,7 +12,12 @@ RUN echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Beginning with first build step under 
         biber \
         build-essential \
         cargo \
+        clang \
+        clang-format \
+        clang-tidy \
         cmake \
+        cppcheck \
+        cpplint \
         curl \
         gcc \
         ghostscript \
@@ -47,6 +52,7 @@ RUN echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Beginning with first build step under 
         texlive-lang-chinese \
         texlive-lang-cjk \
         texlive-pictures \
+        uncrustify \
         wget &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Cleaning apt caches." &&\
     apt-get -y clean &&\

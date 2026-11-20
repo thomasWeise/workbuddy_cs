@@ -11,7 +11,7 @@ The image uses Chinese domestic mirrors where possible, so that you can both bui
 The image comes with many tools:
 
 - [Lean](https://lean-lang.org) with a cached [mathlib4](https://github.com/leanprover-community/mathlib4),
-- the [GNU Compiler Collection](https://gcc.gnu.org), to enable `C` programming,
+- the [GNU Compiler Collection](https://gcc.gnu.org) and [clang](https://clang.llvm.org), to enable `C` and `C++` programming, together with the linters [clang-format](https://clang.llvm.org/docs/ClangFormatStyleOptions.html), [clang-tidy](https://clang.llvm.org/extra/clang-tidy), [cppcheck](https://cppcheck.sourceforge.io), [cpplint](https://github.com/cpplint/cpplint), and [uncrustify](https://github.com/uncrustify/uncrustify),
 - the [Rust Programming Language](https://rust-lang.org),
 - [Python&nbsp;3](https://thomasweise.github.io/programmingWithPython) with a virtual environment `/home/user/venv` hosting many pre-installed packages, such as
   - packages for numeric computation: [numpy](https://pypi.org/project/numpy), [numba](https://pypi.org/project/numba), [mpmath](https://pypi.org/project/mpmath), [intel-cmplr-lib-rt](https://pypi.org/project/intel-cmplr-lib-rt),
