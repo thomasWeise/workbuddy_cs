@@ -16,8 +16,10 @@ RUN echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Beginning with first build step under 
         curl \
         gcc \
         ghostscript \
+        gimp \
         git \
         gnuplot \
+        imagemagick \
         inkscape \
         latex-cjk-all \
         latex-cjk-common \
@@ -79,6 +81,7 @@ RUN echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Beginning with first build step under 
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Finished first build step under 'root'."
 
 USER user
+ENV LEAN_VERSION="v4.37.0-rc1"
 
 # We will use https://mirror.sjtu.edu.cn/elan/?mirror_intel_list.
 RUN --mount=type=bind,source=python-requirements.txt,target=/tmp/requirements.txt \
@@ -101,9 +104,9 @@ RUN --mount=type=bind,source=python-requirements.txt,target=/tmp/requirements.tx
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now updating elan." &&\
     elan self update &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now installing elan toolchain." &&\
-    elan toolchain install 4.36.0 &&\
+    elan toolchain install "${LEAN_VERSION}" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now setting default tool chain." &&\
-    elan default 4.36.0 &&\
+    elan default "${LEAN_VERSION}" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Printing versions." &&\
     lean --version &&\
     lake --version &&\
