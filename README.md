@@ -25,6 +25,7 @@ The image comes with many tools:
   - testing: [coverage](https://pypi.org/project/coverage), [pytest](https://pypi.org/project/pytest), [pytest-timeout](https://pypi.org/project/pytest-timeout),
   - package, setup, and deployment tools: [setuptools](https://pypi.org/project/setuptools), [testresources](https://pypi.org/project/testresources), [twine](https://pypi.org/project/twine), [virtualenv](https://pypi.org/project/virtualenv), [wheel](https://pypi.org/project/wheel), [psutil](https://pypi.org/project/psutil), and
   - our own packages: [pycommons](https://pypi.org/project/pycommons), [moptipy](https://pypi.org/project/moptipy), [moptipyapps](https://pypi.org/project/moptipyapps).
+- Java [OpenJDK](https://openjdk.org) and [Maven](https://maven.apache.org) for Java development,
 - a full [TeX Live](https://tug.org/texlive) installation,
 - a full [LibreOffice](https://www.libreoffice.org) installation,
 - an [Inkscape](https://inkscape.org) installation for vector graphics editing, and

@@ -19,6 +19,8 @@ RUN echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Beginning with first build step under 
         cppcheck \
         cpplint \
         curl \
+        default-jdk-headless \
+        default-jre-headless \
         gcc \
         ghostscript \
         gimp \
@@ -30,11 +32,12 @@ RUN echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Beginning with first build step under 
         latex-cjk-common \
         latex-cjk-chinese \
         libgmp-dev \
-        libreoffice \
+        libreoffice-core-nogui \
         libssl-dev \
         libuv1-dev \
         libxcb-dri3-0 \
         linux-headers-7.3.0-11-generic \
+        maven \
         musl-dev \
         ocrmypdf \
         pkg-config \
