@@ -25,6 +25,7 @@ RUN echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Beginning with first build step under 
         default-jdk-headless \
         default-jre-headless \
         gcc \
+        gettext-base \
         ghostscript \
         gimp \
         git \
