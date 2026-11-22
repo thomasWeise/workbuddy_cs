@@ -150,9 +150,10 @@ RUN --mount=type=bind,source=resources/python-requirements.txt,target=/tmp/requi
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now installing it directly." &&\
     mv mcp-latex-server latex_server &&\
     pip install -e ./latex_server &&\
-    mkdir -p "/home/user/.workbuddy" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Deactivating virtual environment." &&\
     deactivate &&\
+    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Ensuring that .workbuddy exists." &&\
+    mkdir -p "/home/user/.workbuddy" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now purging everything." &&\
     rm -rf "/tmp/*" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): All is done, we built the image workbuddy_cs."
