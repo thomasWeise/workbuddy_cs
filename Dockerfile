@@ -2,6 +2,8 @@ FROM ghcr.io/thomasweise/workbuddy_plain:v2026.11.20
 
 USER root
 
+ARG GITHUB_PROXY="https://ghproxy.net/"
+
 RUN echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Beginning with first build step under root." &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Making frontend non-interactive." &&\
     export DEBIAN_FRONTEND=noninteractive &&\
@@ -124,7 +126,8 @@ RUN --mount=type=bind,source=resources/python-requirements.txt,target=/tmp/requi
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Entering user's home directory." &&\
     cd "/home/user" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Downloading mathlib4 from a domestic git mirror." &&\
-    git clone "https://ghproxy.net/https://github.com/leanprover-community/mathlib4" &&\
+    #git clone "https://gitcode.com/GitHub_Trending/ma/mathlib4" &&\
+    git clone "${GITHUB_PROXY}https://github.com/leanprover-community/mathlib4" &&\
     cd mathlib4 &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Loading cached mathlib4." &&\
     lake exe cache get &&\
@@ -141,12 +144,14 @@ RUN --mount=type=bind,source=resources/python-requirements.txt,target=/tmp/requi
     . "$venvDir/bin/activate" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Installing pip Packages." &&\
     python3 -m pip install --no-input --default-timeout=300 --timeout=300 --retries=100 -r /tmp/requirements.txt &&\
-    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Installing MCP Packages." &&\
-    python3 -m pip install --no-input --default-timeout=300 --timeout=300 --retries=100 -r /tmp/mcp.txt &&\
+    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Installing MCP Packages: Resolving Github Proxy." &&\
+    envsubst < /tmp/mcp.txt > /tmp/mcp_resolved.txt &&\
+    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now installing MCP Packages." &&\
+    python3 -m pip install --no-input --default-timeout=300 --timeout=300 --retries=100 -r /tmp/mcp_resolved.txt &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now handling MCP-LaTeX-Server directly. First entering site-packages." &&\
     cd /home/user/venv/lib/python3.14/site-packages &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now cloning the server." &&\
-    git clone "https://ghproxy.net/https://github.com/RobertoDure/mcp-latex-server.git" &&\
+    git clone "${GITHUB_PROXY}https://github.com/RobertoDure/mcp-latex-server.git" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now installing it directly." &&\
     mv mcp-latex-server latex_server &&\
     pip install -e ./latex_server &&\

@@ -1,5 +1,5 @@
 # Python MCP servers
-git+https://ghproxy.net/https://github.com/ibuildrun/clangd-mcp.git#egg=clangd-mcp
+git+${GITHUB_PROXY}https://github.com/ibuildrun/clangd-mcp.git#egg=clangd-mcp
 jvm-mcp-server
 lean-mcp
 maven-decoder-mcp
