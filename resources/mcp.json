@@ -1,0 +1,83 @@
+{
+  "mcpServers": {
+    "lean-mcp": {
+      "command": "/home/user/venv/bin/python",
+      "args": [
+        "/home/user/mcp_fastmcp_compat_launcher.py",
+        "lean_mcp.server",
+        "main"
+      ],
+      "env": {
+        "LEAN_PROJECT_PATH": "/home/user/mathlib4",
+        "HOME": "/home/user",
+        "PATH": "/home/user/.elan/bin:/home/user/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      },
+      "disabled": false
+    },
+    "clangd-mcp": {
+      "command": "/home/user/venv/bin/python",
+      "args": [
+        "/home/user/mcp_fastmcp_compat_launcher.py",
+        "clangd_mcp.server",
+        "main"
+      ],
+      "env": {
+        "HOME": "/home/user",
+        "PATH": "/home/user/venv/bin:/home/user/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      },
+      "disabled": false
+    },
+    "jvm-mcp-server": {
+      "command": "/home/user/venv/bin/python",
+      "args": [
+        "/home/user/mcp_fastmcp_compat_launcher.py",
+        "jvm_mcp_server.__main__",
+        "main"
+      ],
+      "env": {
+        "HOME": "/home/user",
+        "PATH": "/home/user/venv/bin:/home/user/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      },
+      "disabled": false
+    },
+    "maven-decoder-mcp": {
+      "command": "/home/user/venv/bin/maven-decoder-mcp",
+      "args": [],
+      "env": {
+        "HOME": "/home/user",
+        "PATH": "/home/user/venv/bin:/home/user/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "MAVEN_AUTO_DOWNLOAD": "true",
+        "MCP_LOG_LEVEL": "WARNING"
+      },
+      "disabled": false
+    },
+    "mcp-server-git": {
+      "command": "/home/user/venv/bin/python",
+      "args": [
+        "-m",
+        "mcp_server_git",
+        "--repository",
+        "/home/user/mathlib4"
+      ],
+      "env": {
+        "HOME": "/home/user",
+        "PATH": "/home/user/venv/bin:/home/user/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      },
+      "disabled": false
+    },
+    "latex-server": {
+      "command": "/home/user/venv/bin/python",
+      "args": [
+        "/home/user/mcp_fastmcp_compat_launcher.py",
+        "-m",
+        "latex_server.latex_server"
+      ],
+      "env": {
+        "HOME": "/home/user",
+        "PATH": "/home/user/venv/bin:/home/user/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "LATEX_SERVER_BASE_PATH": "/home/user/workbuddy-data"
+      },
+      "disabled": false
+   }
+  }
+}

@@ -13,6 +13,7 @@ RUN echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Beginning with first build step under 
         build-essential \
         cargo \
         clang \
+        clangd \
         clang-format \
         clang-tidy \
         cmake \
@@ -93,7 +94,8 @@ USER user
 ENV LEAN_VERSION="v4.37.0-rc1"
 
 # We will use https://mirror.sjtu.edu.cn/elan/?mirror_intel_list.
-RUN --mount=type=bind,source=python-requirements.txt,target=/tmp/requirements.txt \
+RUN --mount=type=bind,source=resources/python-requirements.txt,target=/tmp/requirements.txt \
+    --mount=type=bind,source=resources/python-mcp.txt,target=/tmp/mcp.txt \
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Beginning second build step as 'user'." &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Making frontend non-interactive." &&\
     export DEBIAN_FRONTEND=noninteractive &&\
@@ -122,7 +124,7 @@ RUN --mount=type=bind,source=python-requirements.txt,target=/tmp/requirements.tx
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Entering user's home directory." &&\
     cd "/home/user" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Downloading mathlib4 from a domestic git mirror." &&\
-    git clone "https://gitcode.com/GitHub_Trending/ma/mathlib4" &&\
+    git clone "https://ghproxy.net/https://github.com/leanprover-community/mathlib4" &&\
     cd mathlib4 &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Loading cached mathlib4." &&\
     lake exe cache get &&\
@@ -139,6 +141,16 @@ RUN --mount=type=bind,source=python-requirements.txt,target=/tmp/requirements.tx
     . "$venvDir/bin/activate" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Installing pip Packages." &&\
     python3 -m pip install --no-input --default-timeout=300 --timeout=300 --retries=100 -r /tmp/requirements.txt &&\
+    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Installing MCP Packages." &&\
+    python3 -m pip install --no-input --default-timeout=300 --timeout=300 --retries=100 -r /tmp/mcp.txt &&\
+    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now handling MCP-LaTeX-Server directly. First entering site-packages." &&\
+    cd /home/user/venv/lib/python3.14/site-packages &&\
+    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now cloning the server." &&\
+    git clone "https://ghproxy.net/https://github.com/RobertoDure/mcp-latex-server.git" &&\
+    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now installing it directly." &&\
+    mv mcp-latex-server latex_server &&\
+    pip install -e ./latex_server &&\
+    mkdir -p "/home/user/.workbuddy" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Deactivating virtual environment." &&\
     deactivate &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now purging everything." &&\
@@ -149,3 +161,7 @@ RUN --mount=type=bind,source=python-requirements.txt,target=/tmp/requirements.tx
 ENV PATH="/home/user/.elan/bin:/home/user/mathlib4:/home/user/.local/bin:/home/user/venv/bin:${PATH}"
 # Permanently activating virtual environment with all installed python packages
 ENV VIRTUAL_ENV="/home/user/venv"
+
+# Setting up the MCP files.
+COPY --chown=user resources/mcp.json "/home/user/.workbuddy/mcp.json"
+COPY --chown=user resources/mcp_fastmcp_compat_launcher.py "/home/user/mcp_fastmcp_compat_launcher.py"

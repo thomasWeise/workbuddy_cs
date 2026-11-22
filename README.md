@@ -30,8 +30,18 @@ The image comes with many tools:
 - a full [LibreOffice](https://www.libreoffice.org) installation,
 - an [Inkscape](https://inkscape.org) installation for vector graphics editing, and
 - [GIMP](https://www.gimp.org) and [ImageMagick](https://imagemagick.org) for pixel image processing,
-- [tesseract-ocr](https://tesseractocr.org) and [ocrmypdf](https://github.com/ocrmypdf/OCRmyPDF) for performing image-to-text actions. 
+- [tesseract-ocr](https://tesseractocr.org) and [ocrmypdf](https://github.com/ocrmypdf/OCRmyPDF) for performing image-to-text actions,
+- [git](https://git-scm.com), [curl](https://curl.se), and [wget](https://www.gnu.org/software/wget) for downloading data. 
 
+
+Additionally, we have pre-configured several Python-based MCP actions:
+
+- [lean-mcp](https://pypi.org/project/lean-mcp) for working with Lean4 + Mathlib,
+- [latex-server](https://github.com/RobertoDure/mcp-latex-server) for TeX&nbsp;Live interaction,
+- [clangd-mcp](https://github.com/ibuildrun/clangd-mcp) for C/C++ coding,
+- [jvm-mcp-server](https://pypi.org/project/jvm-mcp-server) for analyzing Java projects,
+- [maven-decoder-mcp](https://pypi.org/project/maven-decoder-mcp) for Maven interaction, and
+- [mcp-server-git](https://pypi.org/project/mcp-server-git) for interactions with git.
 
 This should enable you to do lots of things out of the box.
 
