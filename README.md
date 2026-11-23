@@ -66,7 +66,7 @@ This should enable you to do lots of things out of the box.
 ## 3. Run the Image
 You can either run this image via the provided script or manually.
 Either way, after starting the container, you can log in as described in [Section&nbsp;4.1](#41-logging-in).
-After that, you can use WorkBuddy as discussed in [Section&nbsp;4.2.](#42-using-workbuddy).
+After that, you can use WorkBuddy as discussed in [Section&nbsp;4.2](#42-using-workbuddy).
 
 
 ### 3.1. Run it via provided Script
