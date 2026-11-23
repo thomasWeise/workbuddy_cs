@@ -1,13 +1,30 @@
+[![https://thomasweise.github.io](https://shields.io/badge/home-thomasweise.github.io-009000)](https://thomasweise.github.io)
+
 # A WorkBuddy Docker image for Computer Science work.
 
 ## 1. Introduction
 This is a [Docker](https://www.docker.com) image of the [WorkBuddy](https://www.workbuddy.cn) agent with many packages for computer science works installed.
-It is based on an [Ubuntu](https://ubuntu.com) [Linux](https://thomasweise.github.io/tags/linux) image.
+It is intended as a pipeline for using AI for computer science research.
+For example, we can use [Lean](https://lean-lang.org) for mathematical proofs,
+[TeX Live](https://tug.org/texlive) for writing papers in LaTeX, and
+[Python&nbsp;3](https://thomasweise.github.io/programmingWithPython) with many scientific packages pre-installed for experiments.
+
+The image is based on our [plain WorkBuddy image](https://thomasweise.github.io/workbuddy_plain).
 It is intended for use in particular with [rootless Docker](https://thomasweise.github.io/posts/2026-11-17-installing-rootless-docker-on-ubuntu-in-china) installations.
 You can find the image at [`ghcr.io/thomasweise/workbuddy_cs`](https://github.com/thomasWeise/workbuddy_cs/pkgs/container/workbuddy_cs).
 
-The image uses Chinese domestic mirrors where possible, so that you can both build and run it in China.
+WorkBuddy normally runs in a Chrome Sandbox. 
+However, here we put it *additionally* into a Docker container.
+So it runs in a sandbox inside a container.
+This has the two advantages that we are *(a)*&nbsp;less likely to make errors that could mess up with our local data or systems configuration and *(b)*&nbsp;can have consistent installations of several tools directly contained in the image.
 
+**Notice:** I am totally new to using AI tools.
+Therefore, this is really a very very experimental setup.
+I cannot guarantee that it will work.
+
+
+## 2. Additional Tools Provided by this Image
+This image here uses Chinese domestic mirrors where possible, so that you can both build and run it in China.
 The image comes with many tools:
 
 - [Lean](https://lean-lang.org) with a cached [mathlib4](https://github.com/leanprover-community/mathlib4),
@@ -46,21 +63,14 @@ Additionally, we have pre-configured several Python-based MCP actions:
 This should enable you to do lots of things out of the box.
 
 
-**Notice:** I am totally new to using AI tools.
-Therefore, this is really a very very experimental setup.
-I cannot guarantee that it will work.
-
-
-## 2. Run the Image
+## 3. Run the Image
 You can either run this image via the provided script or manually.
-Either way, the WorkBuddy login window will pop up.
-It would provide you with a link to copy into your browser.
-Then, you can authenticate/login via your browser.
-After that, WorkBuddy can be used.
+Either way, after starting the container, you can log in as described in [Section&nbsp;4.1](#41-logging-in).
+After that, you can use WorkBuddy as discussed in [Section&nbsp;4.2.](#42-using-workbuddy).
 
 
-### 2.1. Run it via provided Script
-Under Ubuntu Linux, you can run it with script [`workbuddy_cs_run.sh`](https://thomasweise.github.io/workbuddy_cs/workbuddy_cs_run.sh).
+### 3.1. Run it via provided Script
+Under Ubuntu Linux, you can run the container with script [`workbuddy_cs_run.sh`](https://thomasweise.github.io/workbuddy_cs/workbuddy_cs_run.sh).
 This script will take three optional parameters:
 
 - The directory to mount into WorkBuddy, by default `"/tmp/workbuddy"`.
@@ -76,8 +86,9 @@ This script will take three optional parameters:
   If you set this to `"local"`, then you can also run a Docker image that you built locally using, e.g., the scripts [`workbuddy_cs_build.sh`](https://thomasweise.github.io/workbuddy_cs/workbuddy_cs_build.sh) and our [`Dockerfile.sh`](https://thomasweise.github.io/workbuddy_cs/Dockerfile).
 
 
-## 2.2. Run it by Hand from the Shell
+## 3.2. Run it by Hand from the Shell
 Alternatively, you can run the image by hand.
+This will also download the image if it is not downloaded yet.
 
 Notice that in order to run the image properly, you need to first set `xhost +local:docker` on your system.
 This is needed so that WorkBuddy can access your screen.
@@ -97,10 +108,10 @@ docker run -it --rm \
 ```
 
 
-## 3. Usage
+## 4. Usage
 After you have started the container as described above, a WorkBuddy window will pop up.
 
-### 3.1. Logging In
+### 4.1. Logging In
 First, you need to log in.
 Ideally, you have a WeChat account already, which makes this very easy:
 
@@ -125,7 +136,7 @@ You can paste login link in your browser and follow the instructions.
 This gets you logged in.
 
 
-### 3.2. Using WorkBuddy
+### 4.2. Using WorkBuddy
 Now you can now use WorkBuddy.
 
 <img alt="Example Step 1." src="https://thomasweise.github.io/workbuddy_plain/images/workbuddy_example_1.png" style="width:50%;border:2px solid black;border-radius:8px" />
@@ -141,7 +152,7 @@ This indeed succeeds.
 And the files appear indeed in the shared folder.
 
 
-## 4. License
+## 5. License
 Copyright (C) 2026  [Thomas Weise](https://thomasweise.github.io) (汤卫思教授)
 
 Dr. [Thomas Weise](https://thomasweise.github.io) (see [Contact](#12-contact)) holds the copyright of these scripts.
@@ -159,7 +170,7 @@ If not, see <https://www.gnu.org/licenses/>.
 **If you feel that this repository or image infringes any of your property rights, please contact me.**
 
 
-## 5. Contact
+## 6. Contact
 If you have any questions or suggestions, please contact
 Prof. Dr. [Thomas Weise](https://thomasweise.github.io) (汤卫思教授) of the 
 School of Artificial Intelligence and Big Data ([人工智能与大数据学院](http://www.hfuu.edu.cn/aibd)) at
