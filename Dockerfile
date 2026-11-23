@@ -172,3 +172,6 @@ ENV VIRTUAL_ENV="/home/user/venv"
 # Setting up the MCP files.
 COPY --chown=user resources/mcp.json "/home/user/.workbuddy/mcp.json"
 COPY --chown=user resources/mcp_fastmcp_compat_launcher.py "/home/user/mcp_fastmcp_compat_launcher.py"
+
+# switching user to root
+USER ROOT
