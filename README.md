@@ -63,7 +63,13 @@ After that, WorkBuddy can be used.
 Under Ubuntu Linux, you can run it with script [`workbuddy_cs_run.sh`](https://thomasweise.github.io/workbuddy_cs/workbuddy_cs_run.sh).
 This script will take three optional parameters:
 
-- The directory to mount into WorkBuddy, by default `"."`
+- The directory to mount into WorkBuddy, by default `"/tmp/workbuddy"`.
+  This folder will be created if it does not exist.
+  You can point this to some folder with data in it that you want to share.
+  The default setting just uses a temporary folder, where nothing important should be in.
+  This directory should have reading and writing permissions for the container.
+  The easiest way to do this is to `chmod 777 directory`.
+  The files created by WorkBuddy will have read permissions for you only, so you can tell it to give all files read/write permissions for everyone.
 - The version of the image to run, by default `"latest"`
 - The mode of the image to use.
   By default, this uses the image [`ghcr.io/thomasweise/workbuddy_cs`](https://github.com/thomasWeise/workbuddy_cs/pkgs/container/workbuddy_cs) from the GitHub package repository.
@@ -91,7 +97,51 @@ docker run -it --rm \
 ```
 
 
-## 3. License
+## 3. Usage
+After you have started the container as described above, a WorkBuddy window will pop up.
+
+### 3.1. Logging In
+First, you need to log in.
+Ideally, you have a WeChat account already, which makes this very easy:
+
+<img alt="The login screen." src="https://thomasweise.github.io/workbuddy_plain/images/workbuddy_sign_in_1.png" style="width:50%;border:2px solid black;border-radius:8px" />
+
+You click "Sign in" in the login screen.
+
+<img alt="Copy link." src="https://thomasweise.github.io/workbuddy_plain/images/workbuddy_sign_in_2.png" style="width:50%;border:2px solid black;border-radius:8px" />
+
+Then you can copy a login link.
+
+<img alt="Copy link." src="https://thomasweise.github.io/workbuddy_plain/images/workbuddy_sign_in_3.png" style="width:50%;border:2px solid black;border-radius:8px" />
+
+You click "Copy Login Link".
+
+<img alt="Paste login link." src="https://thomasweise.github.io/workbuddy_plain/images/workbuddy_sign_in_4.png" style="width:50%;border:2px solid black;border-radius:8px" />
+
+You can paste login link in your browser and follow the instructions.
+
+<img alt="Log in." src="https://thomasweise.github.io/workbuddy_plain/images/workbuddy_sign_in_5.png" style="width:50%;border:2px solid black;border-radius:8px" />
+
+This gets you logged in.
+
+
+### 3.2. Using WorkBuddy
+Now you can now use WorkBuddy.
+
+<img alt="Example Step 1." src="https://thomasweise.github.io/workbuddy_plain/images/workbuddy_example_1.png" style="width:50%;border:2px solid black;border-radius:8px" />
+
+Here I instruct WorkBuddy to create a simple Python file, run it, store its output in the shared folder, and set all permissions to the generated files so that I can edit them.
+
+<img alt="Example, Step 2." src="https://thomasweise.github.io/workbuddy_plain/images/workbuddy_example_2.png" style="width:50%;border:2px solid black;border-radius:8px" />
+
+This indeed succeeds.
+
+<img alt="Example, Step 3." src="https://thomasweise.github.io/workbuddy_plain/images/workbuddy_example_3.png" style="width:50%;border:2px solid black;border-radius:8px" />
+
+And the files appear indeed in the shared folder.
+
+
+## 4. License
 Copyright (C) 2026  [Thomas Weise](https://thomasweise.github.io) (汤卫思教授)
 
 Dr. [Thomas Weise](https://thomasweise.github.io) (see [Contact](#12-contact)) holds the copyright of these scripts.
@@ -109,7 +159,7 @@ If not, see <https://www.gnu.org/licenses/>.
 **If you feel that this repository or image infringes any of your property rights, please contact me.**
 
 
-## 4. Contact
+## 5. Contact
 If you have any questions or suggestions, please contact
 Prof. Dr. [Thomas Weise](https://thomasweise.github.io) (汤卫思教授) of the 
 School of Artificial Intelligence and Big Data ([人工智能与大数据学院](http://www.hfuu.edu.cn/aibd)) at

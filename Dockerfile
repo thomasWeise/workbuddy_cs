@@ -1,4 +1,4 @@
-FROM ghcr.io/thomasweise/workbuddy_plain:v2026.11.20
+FROM ghcr.io/thomasweise/workbuddy_plain:v2026.11.23
 
 USER root
 
