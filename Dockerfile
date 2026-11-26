@@ -1,4 +1,4 @@
-FROM ghcr.io/thomasweise/workbuddy_plain:v2026.11.23
+FROM ghcr.io/thomasweise/workbuddy_plain:v2026.11.27
 
 USER root
 
@@ -102,6 +102,9 @@ RUN --mount=type=bind,source=resources/python-requirements.txt,target=/tmp/requi
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Beginning second build step as 'user'." &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Making frontend non-interactive." &&\
     export DEBIAN_FRONTEND=noninteractive &&\
+    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Creating Maven settings directory if it does not exist." &&\
+    mkdir -p "home/user/.m2" &&\
+    mkdir -p "home/user/.m2/repository" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Entering temp directory." &&\
     cd "/tmp/" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now downloading Glean4 from SJTU mirror." &&\
@@ -172,6 +175,7 @@ ENV VIRTUAL_ENV="/home/user/venv"
 # Setting up the MCP files.
 COPY --chown=user resources/mcp.json "/home/user/.workbuddy/mcp.json"
 COPY --chown=user resources/mcp_fastmcp_compat_launcher.py "/home/user/mcp_fastmcp_compat_launcher.py"
+COPY --chown=user resources/maven_settings.xml "/home/user/.m2/settings.xml"
 
 # switching user to root
 USER root

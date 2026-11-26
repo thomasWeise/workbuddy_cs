@@ -68,6 +68,12 @@ You can either run this image via the provided script or manually.
 Either way, after starting the container, you can log in as described in [Section&nbsp;4.1](#41-logging-in).
 After that, you can use WorkBuddy as discussed in [Section&nbsp;4.2](#42-using-workbuddy).
 
+**Connection Issues:**
+If your internet connection is unstable, it may take a few attempts to download the image.
+The image is not small.
+This download issue only occurs during the first launch of the image&nbsp;(or if you update it later on).
+If you experience connection issues, you can combine the [script-based execution](#31-run-it-via-provided-script) with our [`tryForever.sh`](https://thomasweise.github.io/posts/2026-03-09-repeating-until-success-linux) shell script.
+
 
 ### 3.1. Run it via provided Script
 Under Ubuntu Linux, you can run the container with script [`workbuddy_cs_run.sh`](https://thomasweise.github.io/workbuddy_cs/workbuddy_cs_run.sh).
@@ -145,11 +151,11 @@ Here I instruct WorkBuddy to create a simple Python file, run it, store its outp
 
 <img alt="Example, Step 2." src="https://thomasweise.github.io/workbuddy_plain/images/workbuddy_example_2.png" style="width:50%;border:2px solid black;border-radius:8px" />
 
-This indeed succeeds.
+This indeed succeeds&hellip;
 
 <img alt="Example, Step 3." src="https://thomasweise.github.io/workbuddy_plain/images/workbuddy_example_3.png" style="width:50%;border:2px solid black;border-radius:8px" />
 
-And the files appear indeed in the shared folder.
+&hellip;and the files appear indeed in the shared folder.
 
 
 ## 5. License
