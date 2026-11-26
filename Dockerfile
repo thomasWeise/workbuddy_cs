@@ -107,6 +107,8 @@ RUN --mount=type=bind,source=resources/python-requirements.txt,target=/tmp/requi
     mkdir -p "home/user/.m2/repository" &&\
     mkdir -p "/home/user/.cache/maven-decoder-mcp/repository" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Entering temp directory." &&\
+    mvn help:system &&\
+    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Entering temp directory." &&\
     cd "/tmp/" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now downloading Glean4 from SJTU mirror." &&\
     curl -L "https://s3.jcloud.sjtu.edu.cn/899a892efef34b1b944a19981040f55b-oss01/elan/glean/releases/download/v0.1.19/glean_Linux_x86_64.tar.gz" -o /tmp/glean.tar.gz &&\
