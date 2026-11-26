@@ -105,6 +105,7 @@ RUN --mount=type=bind,source=resources/python-requirements.txt,target=/tmp/requi
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Creating Maven settings directory if it does not exist." &&\
     mkdir -p "home/user/.m2" &&\
     mkdir -p "home/user/.m2/repository" &&\
+    mkdir -p "/home/user/.cache/maven-decoder-mcp/repository" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Entering temp directory." &&\
     cd "/tmp/" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now downloading Glean4 from SJTU mirror." &&\

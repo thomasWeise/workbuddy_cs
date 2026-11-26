@@ -65,19 +65,14 @@
       },
       "disabled": false
     },
-    "latex-server": {
-      "command": "/home/user/venv/bin/python",
-      "args": [
-        "/home/user/mcp_fastmcp_compat_launcher.py",
-        "-m",
-        "latex_server.latex_server"
-      ],
-      "env": {
-        "HOME": "/home/user",
-        "PATH": "/home/user/venv/bin:/home/user/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
-        "LATEX_SERVER_BASE_PATH": "/home/user/workbuddy-data"
-      },
-      "disabled": false
-   }
+  "latex-server": {
+    "command": "/home/user/venv/bin/mcp-latex-server",
+    "args": [],
+    "env": {
+      "HOME": "/home/user",
+      "PATH": "/home/user/venv/bin:/home/user/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "LATEX_SERVER_BASE_PATH": "/home/user/workbuddy-data"
+    },
+    "disabled": false
   }
 }
