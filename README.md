@@ -202,7 +202,7 @@ We will ask it put all the proof, description, maths, artifacts, and plots into 
 
 <figure>
 <img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_02.png" style="width:50%;border:2px solid black;border-radius:8px" alt="WorkBuddy does this quickly. The text on the right-hand side is the Lean output, telling us that everything is OK." />
-<figcaption>WorkBuddy does this quickly. The text on the right-hand side is the Lean output, telling us that everything is OK.</figcaption>
+<figcaption>WorkBuddy does this quickly. The text on the right-hand side is the Lean output, telling us that everything is OK. The Lean proof is in file <a href="https://thomasweise.github.io/workbuddy_cs/images/proof.lean">proof.lean</a>.</figcaption>
 </figure>
 
 <figure>
@@ -217,12 +217,12 @@ We will ask it put all the proof, description, maths, artifacts, and plots into 
 
 <figure>
 <img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_05.png" style="width:50%;border:2px solid black;border-radius:8px" alt="This is the content of the Lean file." />
-<figcaption>This is the content of the Lean file.</figcaption>
+<figcaption>This is the content of the Lean file The Lean proof is in file <a href="https://thomasweise.github.io/workbuddy_cs/images/proof.lean">proof.lean</a>..</figcaption>
 </figure>
 
 <figure>
 <img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_06.png" style="width:50%;border:2px solid black;border-radius:8px" alt="And here we have the output of the proof checker." />
-<figcaption>And here we have the output of the proof checker.</figcaption>
+<figcaption>And here we have the output of the proof checker in file <a href="https://thomasweise.github.io/workbuddy_cs/images/proof_results.txt">proof_results.txt</a>.</figcaption>
 </figure>
 
 <figure>
@@ -232,17 +232,17 @@ We will ask it put all the proof, description, maths, artifacts, and plots into 
 
 <figure>
 <img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_08.png" style="width:50%;border:2px solid black;border-radius:8px" alt="It completes the task and also presents me with the diagram." />
-<figcaption>It completes the task and also presents me with the diagram.</figcaption>
+<figcaption>It completes the task and also presents me with the <a href="https://thomasweise.github.io/workbuddy_cs/images/plot.pdf">diagram</a>.</figcaption>
 </figure>
 
 <figure>
 <img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_09.png" style="width:50%;border:2px solid black;border-radius:8px" alt="" />
-<figcaption>Both the Python script and the PDF it generates appear inside the mounted folder.</figcaption>
+<figcaption>Both the <a href="https://thomasweise.github.io/workbuddy_cs/images/plot.py">Python script</a> and the <a href="https://thomasweise.github.io/workbuddy_cs/images/plot.pdf">PDF</a> it generates appear inside the mounted folder.</figcaption>
 </figure>
 
 <figure>
 <img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_10.png" style="width:50%;border:2px solid black;border-radius:8px" alt="The Python script looks quite reasonable." />
-<figcaption>The Python script looks quite reasonable.</figcaption>
+<figcaption>The <a href="https://thomasweise.github.io/workbuddy_cs/images/plot.py">Python script</a> looks quite reasonable.</figcaption>
 </figure>
 
 <figure>
@@ -257,7 +257,7 @@ We will ask it put all the proof, description, maths, artifacts, and plots into 
 
 <figure>
 <img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_13.png" style="width:50%;border:2px solid black;border-radius:8px" alt="It creates the LaTeX document and presents me with the compiled result." />
-<figcaption>It creates the LaTeX document and presents me with the <a href="https://thomasweise.github.io/workbuddy_cs/summary.pdf">compiled result</a>.</figcaption>
+<figcaption>It creates the <a href="https://thomasweise.github.io/workbuddy_cs/images/summary.tex">LaTeX document</a> and presents me with the <a href="https://thomasweise.github.io/workbuddy_cs/summary.pdf">compiled result</a>.</figcaption>
 </figure>
 
 <figure>
@@ -289,7 +289,6 @@ We will ask it put all the proof, description, maths, artifacts, and plots into 
 <img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_19.png" style="width:50%;border:2px solid black;border-radius:8px" alt="The last page of the generated document." />
 <figcaption>The last page of the <a href="https://thomasweise.github.io/workbuddy_cs/summary.pdf">generated document</a>.</figcaption>
 </figure>
-
 
 During the course of the example, WorkBuddy created the following files:
 
