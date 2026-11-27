@@ -164,8 +164,8 @@ For this, you should ideally have a [WeChat](https://www.wechat.com/en) account.
 Now you can now use WorkBuddy.
 
 <figure>
-<img src="https://thomasweise.github.io/workbuddy_plain/images/workbuddy_example_1.png" style="width:50%;border:2px solid black;border-radius:8px" alt="Here I instruct WorkBuddy to create a simple Python file, run it, store its output in the shared folder, and set all permissions to the generated files so that I can edit them."/>
-<figcaption>Here I instruct WorkBuddy to create a simple Python file, run it, store its output in the shared folder, and set all permissions to the generated files so that I can edit them.</figcaption>
+<img src="https://thomasweise.github.io/workbuddy_plain/images/workbuddy_example_1.png" style="width:50%;border:2px solid black;border-radius:8px" alt="Here I instruct WorkBuddy to create a simple Python file, run it, store its output in the mounted folder, and set all permissions to the generated files so that I can edit them."/>
+<figcaption>Here I instruct WorkBuddy to create a simple Python file, run it, store its output in the mounted folder, and set all permissions to the generated files so that I can edit them.</figcaption>
 </figure>
 
 <figure>
@@ -184,9 +184,124 @@ Now you can now use WorkBuddy.
 </figure>
 
 <figure>
-<img src="https://thomasweise.github.io/workbuddy_plain/images/workbuddy_example_5.png" style="width:50%;border:2px solid black;border-radius:8px" alt="And the files appear indeed in the shared folder." />
-<figcaption>And the files appear indeed in the shared folder.</figcaption>
+<img src="https://thomasweise.github.io/workbuddy_plain/images/workbuddy_example_5.png" style="width:50%;border:2px solid black;border-radius:8px" alt="And the files appear indeed in the mounted folder." />
+<figcaption>And the files appear indeed in the mounted folder.</figcaption>
 </figure>
+
+
+### 4.3. Using the Computer Science Tool Chain
+Now let's do a more advanced example.
+We will ask WorkBuddy to prove that `1+x <= exp(x)` for all real-valued `x`.
+We will ask it to draw the two functions into a diagram next to each other.
+We will ask it put all the proof, description, maths, artifacts, and plots into one LaTeX document and compile it to PDF.
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_01.png" style="width:50%;border:2px solid black;border-radius:8px" alt="We tell WorkBuddy to store all the artifacts into the folder that we mounted into its container. Then we give it the task to do the proof. For this, we advise it to use Lean, which is pre-installed in the image." />
+<figcaption>We tell WorkBuddy to store all the artifacts into the folder that we mounted into its container. Then we give it the task to do the proof. For this, we advise it to use [Lean](https://lean-lang.org), which is pre-installed in the image.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_02.png" style="width:50%;border:2px solid black;border-radius:8px" alt="WorkBuddy does this quickly. The text on the right-hand side is the Lean output, telling us that everything is OK." />
+<figcaption>WorkBuddy does this quickly. The text on the right-hand side is the Lean output, telling us that everything is OK.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_03.png" style="width:50%;border:2px solid black;border-radius:8px" alt="It has created both files." />
+<figcaption>It has created both files.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_04.png" style="width:50%;border:2px solid black;border-radius:8px" alt="I can see both files in the mounted folder." />
+<figcaption>I can see both files in the mounted folder.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_05.png" style="width:50%;border:2px solid black;border-radius:8px" alt="This is the content of the Lean file." />
+<figcaption>This is the content of the Lean file.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_06.png" style="width:50%;border:2px solid black;border-radius:8px" alt="And here we have the output of the proof checker." />
+<figcaption>And here we have the output of the proof checker.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_07.png" style="width:50%;border:2px solid black;border-radius:8px" alt="Now I instruct WorkBuddy to create a Python program plotting the two functions into one diagram. The diagram is to be stored as PDF file." />
+<figcaption>Now I instruct WorkBuddy to create a Python program plotting the two functions into one diagram. The diagram is to be stored as PDF file.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_08.png" style="width:50%;border:2px solid black;border-radius:8px" alt="It completes the task and also presents me with the diagram." />
+<figcaption>It completes the task and also presents me with the diagram.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_09.png" style="width:50%;border:2px solid black;border-radius:8px" alt="" />
+<figcaption>Both the Python script and the PDF it generates appear inside the mounted folder.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_10.png" style="width:50%;border:2px solid black;border-radius:8px" alt="The Python script looks quite reasonable." />
+<figcaption>The Python script looks quite reasonable.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_11.png" style="width:50%;border:2px solid black;border-radius:8px" alt="Now I ask WorkBuddy to write a summary document in LaTeX. I instruct it to include and explain everything that was done and to compile the LaTeX to PDF." />
+<figcaption>Now I ask WorkBuddy to write a summary document in LaTeX. I instruct it to include and explain everything that was done and to compile the LaTeX to PDF.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_12.png" style="width:50%;border:2px solid black;border-radius:8px" alt="It even realizes the limitations of some LaTeX packages&hellip;" />
+<figcaption>It even realizes the limitations of some LaTeX packages&hellip;</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_13.png" style="width:50%;border:2px solid black;border-radius:8px" alt="It creates the LaTeX document and presents me with the compiled result." />
+<figcaption>It creates the LaTeX document and presents me with the <a href="https://thomasweise.github.io/workbuddy_cs/summary.pdf">compiled result</a>.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_14.png" style="width:50%;border:2px solid black;border-radius:8px" alt="Here are all the files that were generated during this session." />
+<figcaption>Here are all the files that were generated during this session.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_15.png" style="width:50%;border:2px solid black;border-radius:8px" alt="This is the front page of the generated document." />
+<figcaption>This is the front page of the <a href="https://thomasweise.github.io/workbuddy_cs/summary.pdf">generated document</a>.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_16.png" style="width:50%;border:2px solid black;border-radius:8px" alt="A part of page 2 of the generated document." />
+<figcaption>A part of page 2 of the <a href="https://thomasweise.github.io/workbuddy_cs/summary.pdf">generated document</a>.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_17.png" style="width:50%;border:2px solid black;border-radius:8px" alt="A part of pages 2 and 3 of the generated document." />
+<figcaption>A part of page 2 and 3 of the <a href="https://thomasweise.github.io/workbuddy_cs/summary.pdf">generated document</a>.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_18.png" style="width:50%;border:2px solid black;border-radius:8px" alt="A part of page 3 of the generated document." />
+<figcaption>A part of page 3 of the <a href="https://thomasweise.github.io/workbuddy_cs/summary.pdf">generated document</a>.</figcaption>
+</figure>
+
+<figure>
+<img src="https://thomasweise.github.io/workbuddy_cs/images/workbuddy_cs_example_19.png" style="width:50%;border:2px solid black;border-radius:8px" alt="The last page of the generated document." />
+<figcaption>The last page of the <a href="https://thomasweise.github.io/workbuddy_cs/summary.pdf">generated document</a>.</figcaption>
+</figure>
+
+
+During the course of the example, WorkBuddy created the following files:
+
+- [proof.lean](https://thomasweise.github.io/workbuddy_cs/images/proof.lean)
+- [proof_results.txt](https://thomasweise.github.io/workbuddy_cs/images/proof_results.txt)
+- [plot.py](https://thomasweise.github.io/workbuddy_cs/images/plot.py)
+- [plot.pdf](https://thomasweise.github.io/workbuddy_cs/images/plot.pdf)
+- [summary.tex](https://thomasweise.github.io/workbuddy_cs/images/summary.tex)
+- [summary.pdf](https://thomasweise.github.io/workbuddy_cs/images/summary.pdf)
+
+If you read [summary.pdf](https://thomasweise.github.io/workbuddy_cs/images/summary.pdf), you will find that the proof that it created does make sense.
+All the files are of surprisingly high quality.
 
 
 ## 5. License

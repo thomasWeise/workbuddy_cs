@@ -22,6 +22,7 @@ jobs:
           cp LICENSE "$website/"
           cp *.sh "$website/"
           cp -R resources "$website/"
+          cp -R images "$website/"
 
       - name: Convert README to HTML
         uses: jaywcjlove/markdown-to-html-cli@v5.0.4
