@@ -1,0 +1,15 @@
+Local Lean MCP verification
+Server: lean4-formal-verifier (lean-mcp, configured in /home/user/.workbuddy/mcp.json)
+Tool: verify_lean_theorem
+Lean project: /home/user/mathlib4
+Proof file: /home/user/workbuddy-data/proof.lean
+
+--- proof.lean ---
+import Mathlib
+
+theorem one_add_le_exp_real (x : ℝ) : 1 + x ≤ Real.exp x := by
+  simpa [add_comm] using Real.add_one_le_exp x
+
+--- MCP execution result ---
+is_error: false
+[QED] Compilacao bem-sucedida. Nenhum erro. Prova completa.
