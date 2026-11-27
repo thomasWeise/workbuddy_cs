@@ -109,6 +109,8 @@ docker run -it --rm \
   --network host \
   --cap-add SYS_ADMIN \
   -e DISPLAY=$DISPLAY \
+  --add-host=update.codebuddy.cn:127.0.0.1 \
+  --add-host=update.workbuddy.cn:127.0.0.1 \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v /path/to/folder/you/want/to/mount/into/image:/home/user/workbuddy-data \
   "ghcr.io/thomasweise/workbuddy_cs:latest"
