@@ -99,6 +99,7 @@ ENV LEAN_VERSION="v4.37.0-rc1"
 # We will use https://mirror.sjtu.edu.cn/elan/?mirror_intel_list.
 RUN --mount=type=bind,source=resources/python-requirements.txt,target=/tmp/requirements.txt \
     --mount=type=bind,source=resources/python-mcp.txt,target=/tmp/mcp.txt \
+    --mount=type=bind,source=resources/clangd_mcp_fix.sh,target=/tmp/clangd_mcp_fix.sh \
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Beginning second build step as 'user'." &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Making frontend non-interactive." &&\
     export DEBIAN_FRONTEND=noninteractive &&\
@@ -155,6 +156,8 @@ RUN --mount=type=bind,source=resources/python-requirements.txt,target=/tmp/requi
     envsubst < /tmp/mcp.txt > /tmp/mcp_resolved.txt &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now installing MCP Packages." &&\
     python3 -m pip install --no-input --default-timeout=300 --timeout=300 --retries=100 -r /tmp/mcp_resolved.txt &&\
+    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Applying the clangd-mcp-fix." &&\
+    /bin/sh /tmp/clangd_mcp_fix.sh &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now handling MCP-LaTeX-Server directly. First entering site-packages." &&\
     cd /home/user/venv/lib/python3.14/site-packages &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now cloning the server." &&\
@@ -168,7 +171,7 @@ RUN --mount=type=bind,source=resources/python-requirements.txt,target=/tmp/requi
     mkdir -p "/home/user/.workbuddy" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now purging everything." &&\
     rm -rf "/tmp/*" &&\
-    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Done with build step 2."
+    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): All is done, we built the image workbuddy_cs."
 
 # Updating path
 ENV PATH="/home/user/.elan/bin:/home/user/mathlib4:/home/user/.local/bin:/home/user/venv/bin:${PATH}"
@@ -182,9 +185,3 @@ COPY --chown=user resources/maven_settings.xml "/home/user/.m2/settings.xml"
 
 # switching user to root
 USER root
-
-# Need one mor root exec to fix the clangd.
-RUN --mount=type=bind,source=resources/clangd_mcp_fix.sh,target=/tmp/clangd_mcp_fix.sh \
-    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Applying the clangd-mcp-fix as root." &&\
-    /tmp/clangd_mcp_fix.sh &&\
-    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): All is done, we built the image workbuddy_cs."
