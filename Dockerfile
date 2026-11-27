@@ -99,7 +99,6 @@ ENV LEAN_VERSION="v4.37.0-rc1"
 # We will use https://mirror.sjtu.edu.cn/elan/?mirror_intel_list.
 RUN --mount=type=bind,source=resources/python-requirements.txt,target=/tmp/requirements.txt \
     --mount=type=bind,source=resources/python-mcp.txt,target=/tmp/mcp.txt \
-    --mount=type=bind,source=resources/clangd_mcp_fix.sh,target=/tmp/clangd_mcp_fix.sh \
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Beginning second build step as 'user'." &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Making frontend non-interactive." &&\
     export DEBIAN_FRONTEND=noninteractive &&\
@@ -163,15 +162,13 @@ RUN --mount=type=bind,source=resources/python-requirements.txt,target=/tmp/requi
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now installing it directly." &&\
     mv mcp-latex-server latex_server &&\
     pip install -e ./latex_server &&\
-    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Applying the clangd-mcp-fix." &&\
-    /tmp/clangd_mcp_fix.sh &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Deactivating virtual environment." &&\
     deactivate &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Ensuring that .workbuddy exists." &&\
     mkdir -p "/home/user/.workbuddy" &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now purging everything." &&\
     rm -rf "/tmp/*" &&\
-    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): All is done, we built the image workbuddy_cs."
+    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Done with build step 2."
 
 # Updating path
 ENV PATH="/home/user/.elan/bin:/home/user/mathlib4:/home/user/.local/bin:/home/user/venv/bin:${PATH}"
@@ -185,3 +182,9 @@ COPY --chown=user resources/maven_settings.xml "/home/user/.m2/settings.xml"
 
 # switching user to root
 USER root
+
+# Need one mor root exec to fix the clangd.
+RUN --mount=type=bind,source=resources/clangd_mcp_fix.sh,target=/tmp/clangd_mcp_fix.sh \
+    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Applying the clangd-mcp-fix as root." &&\
+    /tmp/clangd_mcp_fix.sh &&\
+    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): All is done, we built the image workbuddy_cs."
