@@ -61,7 +61,7 @@ docker run -it --rm \
   --network host \
   --cap-add SYS_ADMIN \
   -e DISPLAY=$DISPLAY \
-  -e WORKBUDDY_ENABLE_LINUX_SANDBOX_CLI=0 \
+  --add-host=update.codebuddy.cn:127.0.0.1 \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v "$sharedDir":/home/user/workbuddy-data \
   "$image"
