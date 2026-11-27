@@ -17,6 +17,7 @@ WorkBuddy normally runs in a Chrome Sandbox.
 However, here we put it *additionally* into a Docker container.
 So it runs in a sandbox inside a container.
 This has the two advantages that we are *(a)*&nbsp;less likely to make errors that could mess up with our local data or systems configuration and *(b)*&nbsp;can have consistent installations of several tools directly contained in the image.
+(We did have to weaken the inner sandbox in some places to make it work, as explained in the [`workbuddy_plain` documentation](https://thomasweise.github.io/workbuddy_plain), though, so this weakens point *(a)* a bit&hellip;)
 
 **Notice:** I am totally new to using AI tools.
 Therefore, this is really a very very experimental setup.
