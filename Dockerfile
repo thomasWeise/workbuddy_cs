@@ -99,6 +99,7 @@ ENV LEAN_VERSION="v4.37.0-rc1"
 # We will use https://mirror.sjtu.edu.cn/elan/?mirror_intel_list.
 RUN --mount=type=bind,source=resources/python-requirements.txt,target=/tmp/requirements.txt \
     --mount=type=bind,source=resources/python-mcp.txt,target=/tmp/mcp.txt \
+    --mount=type=bind,source=resources/clangd_mcp_fix.sh,target=/tmp/clangd_mcp_fix.sh \
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Beginning second build step as 'user'." &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Making frontend non-interactive." &&\
     export DEBIAN_FRONTEND=noninteractive &&\
@@ -162,6 +163,8 @@ RUN --mount=type=bind,source=resources/python-requirements.txt,target=/tmp/requi
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Now installing it directly." &&\
     mv mcp-latex-server latex_server &&\
     pip install -e ./latex_server &&\
+    echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Applying the clangd-mcp-fix." &&\
+    /tmp/clangd_mcp_fix.sh &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Deactivating virtual environment." &&\
     deactivate &&\
     echo "$(date +'%0Y-%0m-%0d %0R:%0S'): Ensuring that .workbuddy exists." &&\
